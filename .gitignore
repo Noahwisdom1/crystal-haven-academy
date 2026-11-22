@@ -1,0 +1,33 @@
+# ───────────────────────────────────────────────
+# Crystal Haven Academy — .gitignore
+# ───────────────────────────────────────────────
+
+# Windows thumbnails and desktop config
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code workspace settings (keep .vscode/extensions.json if you want)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# Node / npm (if any tooling is added later)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Logs
+*.log
+
+# Local environment files (never commit secrets)
+.env
+.env.local
+.env.*.local
