@@ -1455,3 +1455,297 @@ img {
   background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
   color: var(--cha-white);
 }
+
+/* ---------------------------------------------------------------
+   23. Inner-page banner (used on all secondary pages)
+--------------------------------------------------------------- */
+.page-banner {
+  background: linear-gradient(
+    135deg,
+    var(--cha-navy) 0%,
+    var(--cha-navy-light) 60%,
+    #1e3a5f 100%
+  );
+  position: relative;
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+
+/* Subtle radial glow identical to hero decorative layer */
+.page-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 85% 30%, rgba(201,168,76,.14) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 50% at 10% 80%, rgba(201,168,76,.07) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Same crosshatch pattern used in the hero */
+.page-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/G%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.page-banner-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-banner-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cha-gold);
+  margin-bottom: 0.6rem;
+}
+
+.page-banner-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  color: var(--cha-white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.page-banner-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,.8);
+  max-width: 580px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Breadcrumb inside banner */
+.page-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 1rem;
+}
+.page-breadcrumb a {
+  color: rgba(255,255,255,.7);
+  transition: color var(--transition);
+}
+.page-breadcrumb a:hover { color: var(--cha-gold); }
+.page-breadcrumb .bc-sep { color: rgba(255,255,255,.35); }
+.page-breadcrumb .bc-current { color: var(--cha-gold); }
+
+/* ---------------------------------------------------------------
+   24. Programme detail sections (academics.html)
+--------------------------------------------------------------- */
+.programme-detail {
+  padding: var(--section-py) 0;
+}
+.programme-detail + .programme-detail {
+  border-top: 1px solid rgba(0,0,0,.07);
+}
+.programme-detail .prog-icon-lg {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+}
+.programme-detail .prog-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.programme-detail .prog-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--cha-grey);
+}
+.programme-detail .prog-features li i {
+  color: var(--cha-gold);
+  font-size: 1rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------
+   25. Gallery page grid
+--------------------------------------------------------------- */
+.gallery-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.gallery-page-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #e8ecf0 0%, #d1d8e0 100%);
+}
+.gallery-page-item .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,31,60,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--cha-white);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.gallery-page-item:hover .gallery-overlay { opacity: 1; }
+.gallery-page-item .placeholder-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #8fa0b4;
+}
+.gallery-page-item .placeholder-inner i { font-size: 2rem; opacity: .5; }
+.gallery-page-item .placeholder-inner span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .6;
+}
+@media (max-width: 767.98px) {
+  .gallery-page-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 479.98px) {
+  .gallery-page-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------
+   26. Admissions steps (admissions.html full page)
+--------------------------------------------------------------- */
+.adm-timeline {
+  position: relative;
+  padding-left: 3.5rem;
+}
+.adm-timeline::before {
+  content: '';
+  position: absolute;
+  left: 1.3rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--cha-gold), var(--cha-gold-dark));
+  border-radius: 2px;
+}
+.adm-tl-step {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.adm-tl-step:last-child { margin-bottom: 0; }
+.adm-tl-num {
+  position: absolute;
+  left: -3.5rem;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--cha-gold), var(--cha-gold-dark));
+  color: var(--cha-navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: var(--font-serif);
+  flex-shrink: 0;
+  z-index: 1;
+}
+.adm-tl-body strong {
+  display: block;
+  color: var(--cha-navy);
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+.adm-tl-body p {
+  font-size: 0.93rem;
+  color: var(--cha-grey);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* Requirements list */
+.req-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.req-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: var(--cha-grey);
+}
+.req-list li i {
+  color: var(--cha-gold);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------
+   27. Contact page
+--------------------------------------------------------------- */
+.contact-info-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.contact-info-block .ci-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: linear-gradient(135deg, var(--cha-navy), var(--cha-navy-light));
+  color: var(--cha-gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.contact-info-block .ci-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--cha-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+.contact-info-block .ci-value {
+  font-size: 0.95rem;
+  color: var(--cha-grey);
+  line-height: 1.6;
+}
+.contact-info-block .ci-value a {
+  color: var(--cha-grey);
+}
+.contact-info-block .ci-value a:hover { color: var(--cha-navy); }
