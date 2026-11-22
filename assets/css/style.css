@@ -291,6 +291,7 @@ img {
 /* ---------------------------------------------------------------
    06. Hero Section
 --------------------------------------------------------------- */
+
 .hero-section {
   position: relative;
   min-height: 100svh;
@@ -298,15 +299,15 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Gradient as placeholder until real photo is supplied */
-  background: linear-gradient(
-    135deg,
-    var(--cha-navy) 0%,
-    var(--cha-navy-light) 50%,
-    #1e3a5f 100%
-  );
+  background:
+    linear-gradient(
+      rgba(13, 31, 60, 0.72),
+      rgba(13, 31, 60, 0.78)
+    ),
+    url("../images/school-building.jpg") center center / cover no-repeat;
   overflow: hidden;
 }
+
 
 /* Decorative geometric background shapes */
 .hero-section::before {
@@ -475,11 +476,15 @@ img {
 /* ---------------------------------------------------------------
    09. About Section
 --------------------------------------------------------------- */
+
 .about-image-stack {
   position: relative;
-  padding-bottom: 3rem;
-  padding-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0;
 }
+
 
 .about-img-main {
   border-radius: var(--radius-lg);
@@ -488,17 +493,22 @@ img {
   aspect-ratio: 4/3;
 }
 
+
+
 .about-img-accent {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 55%;
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: 100%;
   aspect-ratio: 4/3;
-  border-radius: var(--radius-md);
-  border: 4px solid var(--cha-white);
-  box-shadow: var(--shadow-md);
+  margin-left: auto;
+  border-radius: var(--radius-lg);
+  border: none;
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
 }
+
+
 
 .about-badge {
   position: absolute;
@@ -1749,3 +1759,49 @@ img {
   color: var(--cha-grey);
 }
 .contact-info-block .ci-value a:hover { color: var(--cha-navy); }
+
+
+
+/* ==========================================
+   GLOBAL IMAGE HOVER EFFECTS
+========================================== */
+
+img {
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+img:hover {
+  transform: scale(1.04);
+}
+
+/* Image containers */
+.about-img-main,
+.about-img-accent {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.about-img-main:hover,
+.about-img-accent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(13, 31, 60, 0.18);
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  img,
+  .about-img-main,
+  .about-img-accent {
+    transition: none;
+  }
+
+  img:hover,
+  .about-img-main:hover,
+  .about-img-accent:hover {
+    transform: none;
+  }
+}
+
