@@ -778,6 +778,28 @@ img {
   line-height: 1.65;
 }
 
+.facility-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.facility-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.facility-img.img-placeholder {
+  min-height: 0;
+  height: auto;
+}
+
 /* ---------------------------------------------------------------
    13. Gallery Grid
 --------------------------------------------------------------- */
@@ -1627,11 +1649,47 @@ img {
 }
 .gallery-page-item {
   position: relative;
-  border-radius: var(--radius-md);
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  cursor: pointer;
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, #e8ecf0 0%, #d1d8e0 100%);
+  min-width: 0;
+}
+
+.gallery-page-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-page-item img {
+  object-position: center top;
+}
+/* Gallery image interactions */
+.gallery-page-item img {
+  transition: transform 0.45s ease;
+}
+
+.gallery-page-item:hover img {
+  transform: scale(1.07);
+}
+
+.gallery-page-item .gallery-overlay {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-page-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-page-item .gallery-overlay i {
+  transform: scale(0.7);
+  transition: transform 0.35s ease;
+}
+
+.gallery-page-item:hover .gallery-overlay i {
+  transform: scale(1);
 }
 .gallery-page-item .gallery-overlay {
   position: absolute;
