@@ -1639,42 +1639,55 @@ img {
   flex-shrink: 0;
 }
 
+
 /* ---------------------------------------------------------------
    25. Gallery page grid
 --------------------------------------------------------------- */
 .gallery-page-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-}
-.gallery-page-item {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  min-width: 0;
+  width: 100%;
 }
 
+.gallery-page-item {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  background: linear-gradient(135deg, #e8edf3, #dce4ed);
+}
+
+/* Gallery images */
 .gallery-page-item img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-}
-.gallery-page-item img {
   object-position: center top;
-}
-/* Gallery image interactions */
-.gallery-page-item img {
+  display: block;
   transition: transform 0.45s ease;
 }
 
+/* Image hover effect */
 .gallery-page-item:hover img {
   transform: scale(1.07);
 }
 
+/* Gallery overlay */
 .gallery-page-item .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 31, 60, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--cha-white);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -1684,26 +1697,15 @@ img {
 }
 
 .gallery-page-item .gallery-overlay i {
-  transform: scale(0.7);
+  transform: scale(.7);
   transition: transform 0.35s ease;
 }
 
 .gallery-page-item:hover .gallery-overlay i {
   transform: scale(1);
 }
-.gallery-page-item .gallery-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(13,31,60,.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--cha-white);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-.gallery-page-item:hover .gallery-overlay { opacity: 1; }
+
+/* Placeholder content */
 .gallery-page-item .placeholder-inner {
   position: absolute;
   inset: 0;
@@ -1711,22 +1713,34 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: .5rem;
   color: #8fa0b4;
 }
-.gallery-page-item .placeholder-inner i { font-size: 2rem; opacity: .5; }
+
+.gallery-page-item .placeholder-inner i {
+  font-size: 2rem;
+  opacity: .5;
+}
+
 .gallery-page-item .placeholder-inner span {
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: 500;
   letter-spacing: .04em;
   text-transform: uppercase;
   opacity: .6;
 }
+
+/* Responsive layout */
 @media (max-width: 767.98px) {
-  .gallery-page-grid { grid-template-columns: repeat(2,1fr); }
+  .gallery-page-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
+
 @media (max-width: 479.98px) {
-  .gallery-page-grid { grid-template-columns: 1fr; }
+  .gallery-page-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------------------------------------------------------------
